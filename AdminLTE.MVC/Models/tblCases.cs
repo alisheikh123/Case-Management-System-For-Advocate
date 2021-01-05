@@ -26,15 +26,24 @@ namespace CMS.Models
         [Display(Name = "Case Title")]
         public string Title { get; set; }
 
-        [Display(Name = "File No")]
-        public string File { get; set; }
+        [Display(Name = "Client Name")]
+        public int ClientId { get; set; }
 
 
         [Display(Name = "Court Name")]
         public int courtid { get; set; }
 
+        [Display(Name = "Opposite Name")]
+        public string oppositeName { get; set; }
+
         [Display(Name = "Date of Institution")]
         public DateTime dateInstitution { get; set; }
+
+        [Display(Name = "File No")]
+        public string File { get; set; }
+
+
+        
 
         #region
         [ForeignKey("CaseCatgoryid")]
@@ -42,6 +51,9 @@ namespace CMS.Models
 
         [ForeignKey("courtid")]
         public virtual tblcourt Tblcourt { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual tblClients TblClients { get; set; }
         #endregion
     }
     public enum caseType 
