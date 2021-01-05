@@ -1,4 +1,4 @@
-﻿@using static AdminLTE.MVC.Helpers.NavigationIndicatorHelper;
+﻿@using static CMS.MVC.Helpers.NavigationIndicatorHelper;
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="~/Home" class="brand-link">
         <img src="~/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -46,66 +46,7 @@ else
                 </li>
 
 
-                <li class="nav-item ">
-                    <a asp-controller="Reservation" asp-action="Reservation_Create" class="nav-link @Url.MakeActiveClass("Reservation","Reservation_Create")">
-                        <i class="nav-icon fas fa-typo3"></i>
-                        <p>
-                            Reservation
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a asp-controller="tblCars" asp-action="Index" class="nav-link @Url.MakeActiveClass("tblCars","Index")">
-                        <i class="nav-icon fas fa-car"></i>
-                        <p>
-                            Add New Car
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a asp-controller="tblCustomers" asp-action="Index" class="nav-link @Url.MakeActiveClass("tblCustomers","Index")">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Add New Customer
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a asp-controller="locations" asp-action="Index" class="nav-link @Url.MakeActiveClass("tbllocations","Index")">
-                        <i class="nav-icon fas fa-location-arrow"></i>
-                        <p>
-                            Add Location
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a asp-controller="tblCountries" asp-action="Index" class="nav-link @Url.MakeActiveClass("tblCountries","Index")">
-                        <i class="nav-icon fas fa-location-arrow"></i>
-                        <p>
-                            Add Country
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a asp-controller="tblStates" asp-action="Index" class="nav-link @Url.MakeActiveClass("tblStates","Index")">
-                        <i class="nav-icon fas fa-location-arrow"></i>
-                        <p>
-                            Add State
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a asp-controller="tblCities" asp-action="Index" class="nav-link @Url.MakeActiveClass("tblCities","Index")">
-                        <i class="nav-icon fas fa-location-arrow"></i>
-                        <p>
-                            Add City
-                        </p>
-                    </a>
-                </li>
+        
                 @if (User.Identity.IsAuthenticated)
                 {
             <li class="nav-item ">

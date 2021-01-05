@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdminLTE.MVC.Helpers
+namespace CMS.MVC.Helpers
 {
 public static class NavigationIndicatorHelper
 {

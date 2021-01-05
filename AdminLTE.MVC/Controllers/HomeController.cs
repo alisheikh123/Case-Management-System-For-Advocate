@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AdminLTE.MVC.Models;
+using CMS.MVC.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace AdminLTE.MVC.Controllers
+namespace CMS.MVC.Controllers
 {
     public class HomeController : Controller
     {

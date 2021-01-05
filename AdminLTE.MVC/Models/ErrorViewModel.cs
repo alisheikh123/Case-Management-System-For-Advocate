@@ -1,6 +1,6 @@
 using System;
 
-namespace AdminLTE.MVC.Models
+namespace CMS.MVC.Models
 {
     public class ErrorViewModel
     {
