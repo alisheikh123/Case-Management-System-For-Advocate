@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 using CMS.MVC.Models;
+using CMS.Models;
 
 namespace CMS.MVC.Data
 {
@@ -14,6 +15,7 @@ namespace CMS.MVC.Data
             : base(options)
         {
         }
+        public DbSet<CMS.Models.tblcaseCategory> tblcaseCategory { get; set; }
 
     }
 }
