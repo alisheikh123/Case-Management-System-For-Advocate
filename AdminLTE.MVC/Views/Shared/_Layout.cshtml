@@ -22,8 +22,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="tblCategories" asp-action="Index">Category</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" >Entries</a>
+                            <div class="dropdown-menu" >
+
+                                <a class="dropdown-item" href="/tblcaseCategories/Create">Add Category</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="tblCases/Create">Add Cases</a>
+
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -45,5 +52,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    <script>
+        
+    </script>
 </body>
 </html>

@@ -19,7 +19,7 @@ namespace CMS.Models
         [Display(Name = "Case No")]
         public string CaseNo { get; set; }
 
-
+        [EnumDataType(typeof(caseType))]
         [Display(Name = "Case Nature")]
         public caseType Type { get; set; } 
 
@@ -56,11 +56,11 @@ namespace CMS.Models
         public virtual tblClients TblClients { get; set; }
         #endregion
     }
-    public enum caseType 
+     public enum caseType 
     {
-        Civil=1,
-        Criminal = 2,
-        Other =3,
+        Civil,
+        Criminal,
+        Other
         
     
     }

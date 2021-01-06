@@ -16,6 +16,9 @@ namespace CMS.MVC.Data
         {
         }
         public DbSet<CMS.Models.tblcaseCategory> tblcaseCategory { get; set; }
+        public DbSet<CMS.Models.tblCases> tblCases { get; set; }
+        public DbSet<CMS.Models.tblClients> tblClients { get; set; }
+        public DbSet<CMS.Models.tblcourt> tblcourt { get; set; }
 
     }
 }

@@ -12,22 +12,22 @@ using Microsoft.AspNetCore.Authorization;
 namespace CMS.Controllers
 {
     [AllowAnonymous]
-    public class tblcaseCategoriesController : Controller
+    public class tblClientsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public tblcaseCategoriesController(ApplicationDbContext context)
+        public tblClientsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: tblcaseCategories
+        // GET: tblClients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.tblcaseCategory.ToListAsync());
+            return View(await _context.tblClients.ToListAsync());
         }
 
-        // GET: tblcaseCategories/Details/5
+        // GET: tblClients/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +35,39 @@ namespace CMS.Controllers
                 return NotFound();
             }
 
-            var tblcaseCategory = await _context.tblcaseCategory
+            var tblClients = await _context.tblClients
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (tblcaseCategory == null)
+            if (tblClients == null)
             {
                 return NotFound();
             }
 
-            return View(tblcaseCategory);
+            return View(tblClients);
         }
 
-        // GET: tblcaseCategories/Create
+        // GET: tblClients/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: tblcaseCategories/Create
+        // POST: tblClients/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Categoryname")] tblcaseCategory tblcaseCategory)
+        public async Task<IActionResult> Create([Bind("id,Name,FatherName,Type,CNIC,Dateofbirth,Phone,Address")] tblClients tblClients)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tblcaseCategory);
+                _context.Add(tblClients);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(tblcaseCategory);
+            return View(tblClients);
         }
 
-        // GET: tblcaseCategories/Edit/5
+        // GET: tblClients/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +75,22 @@ namespace CMS.Controllers
                 return NotFound();
             }
 
-            var tblcaseCategory = await _context.tblcaseCategory.FindAsync(id);
-            if (tblcaseCategory == null)
+            var tblClients = await _context.tblClients.FindAsync(id);
+            if (tblClients == null)
             {
                 return NotFound();
             }
-            return View(tblcaseCategory);
+            return View(tblClients);
         }
 
-        // POST: tblcaseCategories/Edit/5
+        // POST: tblClients/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Categoryname")] tblcaseCategory tblcaseCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Name,FatherName,Type,CNIC,Dateofbirth,Phone,Address")] tblClients tblClients)
         {
-            if (id != tblcaseCategory.id)
+            if (id != tblClients.id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace CMS.Controllers
             {
                 try
                 {
-                    _context.Update(tblcaseCategory);
+                    _context.Update(tblClients);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!tblcaseCategoryExists(tblcaseCategory.id))
+                    if (!tblClientsExists(tblClients.id))
                     {
                         return NotFound();
                     }
@@ -115,10 +115,10 @@ namespace CMS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tblcaseCategory);
+            return View(tblClients);
         }
 
-        // GET: tblcaseCategories/Delete/5
+        // GET: tblClients/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +126,30 @@ namespace CMS.Controllers
                 return NotFound();
             }
 
-            var tblcaseCategory = await _context.tblcaseCategory
+            var tblClients = await _context.tblClients
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (tblcaseCategory == null)
+            if (tblClients == null)
             {
                 return NotFound();
             }
 
-            return View(tblcaseCategory);
+            return View(tblClients);
         }
 
-        // POST: tblcaseCategories/Delete/5
+        // POST: tblClients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tblcaseCategory = await _context.tblcaseCategory.FindAsync(id);
-            _context.tblcaseCategory.Remove(tblcaseCategory);
+            var tblClients = await _context.tblClients.FindAsync(id);
+            _context.tblClients.Remove(tblClients);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool tblcaseCategoryExists(int id)
+        private bool tblClientsExists(int id)
         {
-            return _context.tblcaseCategory.Any(e => e.id == id);
+            return _context.tblClients.Any(e => e.id == id);
         }
     }
 }

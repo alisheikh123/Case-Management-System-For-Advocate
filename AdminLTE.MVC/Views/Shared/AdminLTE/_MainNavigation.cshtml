@@ -6,25 +6,23 @@
         <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
     <div class="sidebar">
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-            <img src="~/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-            <a href="#" class="d-block">Hi, @User.Identity.Name </a>
-        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="image">
+        <img src="~/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
     </div>
-}
-else
-{
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-            <a href="#" class="d-block">Hi, Visitor</a>
-        </div>
+    <div class="info">
+        <a href="#" class="d-block">Hi, @User.Identity.Name </a>
     </div>
-}
+</div> }
+            else
+            {
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="info">
+        <a href="#" class="d-block">Hi, Visitor</a>
+    </div>
+</div>}
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item ">
@@ -36,28 +34,41 @@ else
                     </a>
                 </li>
 
-                <li class="nav-item ">
-                    <a asp-controller="tblcategories" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","index")">
-                        <i class="nav-icon fas fa-cat"></i>
+                <li class="nav-item has-treeview menu-close ">
+                    <a href="#" class="nav-link" >
+                        <i class="nav-icon "></i>
                         <p>
-                            Category
+                            Entries
+                            <i class="right fas fa-angle-left"></i>
                         </p>
+                       
+                        
                     </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item  nav-white" style="color:black"><a class="nav-link" href="/tblcaseCategories/Create">Add Category</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item text-black"><a class="nav-link" href="tblCases/Create">Add Cases</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item text-black"><a class="nav-link" href="tblcourts/Create">Add Court</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item text-black"><a class="nav-link" href="tblClients/Create">Add Clients</a></li>
+
+                    </ul>
                 </li>
 
 
-        
+
                 @if (User.Identity.IsAuthenticated)
                 {
-            <li class="nav-item ">
-                <a asp-controller="Home" asp-action="Privacy" class="nav-link @Url.MakeActiveClass("home","privacy")">
-                    <i class="nav-icon fas fa-lock"></i>
-                    <p>
-                        Privacy
-                    </p>
-                </a>
-            </li>
-}
+    <li class="nav-item ">
+        <a asp-controller="Home" asp-action="Privacy" class="nav-link @Url.MakeActiveClass("home","privacy")">
+            <i class="nav-icon fas fa-lock"></i>
+            <p>
+                Privacy
+            </p>
+        </a>
+    </li>}
             </ul>
         </nav>
     </div>

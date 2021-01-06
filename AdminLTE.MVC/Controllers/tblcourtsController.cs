@@ -12,22 +12,22 @@ using Microsoft.AspNetCore.Authorization;
 namespace CMS.Controllers
 {
     [AllowAnonymous]
-    public class tblcaseCategoriesController : Controller
+    public class tblcourtsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public tblcaseCategoriesController(ApplicationDbContext context)
+        public tblcourtsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: tblcaseCategories
+        // GET: tblcourts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.tblcaseCategory.ToListAsync());
+            return View(await _context.tblcourt.ToListAsync());
         }
 
-        // GET: tblcaseCategories/Details/5
+        // GET: tblcourts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +35,39 @@ namespace CMS.Controllers
                 return NotFound();
             }
 
-            var tblcaseCategory = await _context.tblcaseCategory
+            var tblcourt = await _context.tblcourt
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (tblcaseCategory == null)
+            if (tblcourt == null)
             {
                 return NotFound();
             }
 
-            return View(tblcaseCategory);
+            return View(tblcourt);
         }
 
-        // GET: tblcaseCategories/Create
+        // GET: tblcourts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: tblcaseCategories/Create
+        // POST: tblcourts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Categoryname")] tblcaseCategory tblcaseCategory)
+        public async Task<IActionResult> Create([Bind("id,Courtname")] tblcourt tblcourt)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tblcaseCategory);
+                _context.Add(tblcourt);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(tblcaseCategory);
+            return View(tblcourt);
         }
 
-        // GET: tblcaseCategories/Edit/5
+        // GET: tblcourts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +75,22 @@ namespace CMS.Controllers
                 return NotFound();
             }
 
-            var tblcaseCategory = await _context.tblcaseCategory.FindAsync(id);
-            if (tblcaseCategory == null)
+            var tblcourt = await _context.tblcourt.FindAsync(id);
+            if (tblcourt == null)
             {
                 return NotFound();
             }
-            return View(tblcaseCategory);
+            return View(tblcourt);
         }
 
-        // POST: tblcaseCategories/Edit/5
+        // POST: tblcourts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Categoryname")] tblcaseCategory tblcaseCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Courtname")] tblcourt tblcourt)
         {
-            if (id != tblcaseCategory.id)
+            if (id != tblcourt.id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace CMS.Controllers
             {
                 try
                 {
-                    _context.Update(tblcaseCategory);
+                    _context.Update(tblcourt);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!tblcaseCategoryExists(tblcaseCategory.id))
+                    if (!tblcourtExists(tblcourt.id))
                     {
                         return NotFound();
                     }
@@ -115,10 +115,10 @@ namespace CMS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tblcaseCategory);
+            return View(tblcourt);
         }
 
-        // GET: tblcaseCategories/Delete/5
+        // GET: tblcourts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +126,30 @@ namespace CMS.Controllers
                 return NotFound();
             }
 
-            var tblcaseCategory = await _context.tblcaseCategory
+            var tblcourt = await _context.tblcourt
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (tblcaseCategory == null)
+            if (tblcourt == null)
             {
                 return NotFound();
             }
 
-            return View(tblcaseCategory);
+            return View(tblcourt);
         }
 
-        // POST: tblcaseCategories/Delete/5
+        // POST: tblcourts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tblcaseCategory = await _context.tblcaseCategory.FindAsync(id);
-            _context.tblcaseCategory.Remove(tblcaseCategory);
+            var tblcourt = await _context.tblcourt.FindAsync(id);
+            _context.tblcourt.Remove(tblcourt);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool tblcaseCategoryExists(int id)
+        private bool tblcourtExists(int id)
         {
-            return _context.tblcaseCategory.Any(e => e.id == id);
+            return _context.tblcourt.Any(e => e.id == id);
         }
     }
 }

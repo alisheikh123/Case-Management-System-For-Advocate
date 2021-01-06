@@ -1,0 +1,71 @@
+﻿@model CMS.Models.tblCases
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>tblCases</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="CaseCatgoryid" class="control-label"></label>
+                <select asp-for="CaseCatgoryid" class="form-control" asp-items="ViewBag.CaseCatgoryid"></select>
+                <span asp-validation-for="CaseCatgoryid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CaseNo" class="control-label"></label>
+                <input asp-for="CaseNo" class="form-control" />
+                <span asp-validation-for="CaseNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label"></label>
+                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="courtid" class="control-label"></label>
+                <select asp-for="courtid" class="form-control" asp-items="ViewBag.courtid"></select>
+                <span asp-validation-for="courtid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="oppositeName" class="control-label"></label>
+                <input asp-for="oppositeName" class="form-control" />
+                <span asp-validation-for="oppositeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateInstitution" class="control-label"></label>
+                <input asp-for="dateInstitution" class="form-control" />
+                <span asp-validation-for="dateInstitution" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="File" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
