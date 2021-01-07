@@ -4,69 +4,111 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-<h1>@ViewData["caseno"]</h1>
-<h4>tblCases</h4>
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CaseCatgoryid" class="control-label"></label>
-                <select asp-for="CaseCatgoryid" class ="form-control" asp-items="ViewBag.CaseCatgoryid" ></select>
+
+<div class="alert alert-danger" id="Alert" style="display:none">
+    <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Something is Missing!</strong>Please File All Text Fields
+</div>
+<div class="card card-outline card-success" >
+    <div class="card-header card-green"><h2 style="text-align:center">Add New Case</h2></div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Create">
+
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-success btn-sm" />
+                        </div>|
+                        <div class="form-group">
+                            <a asp-action="Index" class="btn btn-primary btn-sm">Back to List</a>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row col-md-12">
+                        <div class="col-md-5">
+                            <div class="form-group ">
+
+                                <select asp-for="CaseCatgoryid" class="form-control" asp-items="ViewBag.CaseCatgoryid">
+                                    <option value="0">--Select Case Category--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <input asp-for="CaseNo" value=@ViewData["caseno"] class="form-control" type="text" readonly />
+                                <span asp-validation-for="CaseNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <select asp-for="Type" class="form-control">
+                                    <option selected="selected" value="0">--Select Case Nature--</option>
+                                    <option value="1">Civil</option>
+                                    <option value="2">Criminal</option>
+                                    <option value="3">Other</option>
+                                </select>
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <input asp-for="Title" class="form-control" placeholder="Title" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId">
+                                    <option value="0">--Select Client Name--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <select asp-for="courtid" class="form-control" asp-items="ViewBag.courtid">
+                                    <option value="0">--Select Court Name--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <input asp-for="oppositeName" class="form-control" placeholder="Opposite Name" />
+                                <span asp-validation-for="oppositeName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input asp-for="File" class="form-control" placeholder="File No" />
+                                <span asp-validation-for="File" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </form>
             </div>
-            <div class="form-group">
-               
-                <input asp-for="CaseNo" value=@ViewData["caseno"] class="form-control" type="text" />
-                <span asp-validation-for="CaseNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control">
-                    <option selected="selected" value="0">--Select Nature--</option>
-                    <option value="1">Civil</option>
-                    <option value="2">Criminal</option>
-                    <option value="3">Other</option>
-                </select>
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                
-                <input asp-for="Title" class="form-control" placeholder="Title" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientId" class="control-label"></label>
-                <select asp-for="ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="courtid" class="control-label"></label>
-                <select asp-for="courtid" class ="form-control" asp-items="ViewBag.courtid"></select>
-            </div>
-            <div class="form-group">
-                
-                <input asp-for="oppositeName" class="form-control" placeholder="Opposite Name" />
-                <span asp-validation-for="oppositeName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dateInstitution" class="control-label"></label>
-                <input asp-for="dateInstitution" class="form-control" />
-                <span asp-validation-for="dateInstitution" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-               
-                <input asp-for="File" class="form-control" placeholder="File No" />
-                <span asp-validation-for="File" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
+    <div class="card-footer">Footer</div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

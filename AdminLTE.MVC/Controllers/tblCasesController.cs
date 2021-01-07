@@ -53,23 +53,23 @@ namespace CMS.Controllers
         public IActionResult Create()
         {
             
-             string caseno = "001";
-           var casecount =_context.tblCases.Count();//2
-            var itemscase = casecount - 1;//2-1
-             
-            var checkcasecode = _context.tblCases.Where(x => x.CaseNo == caseno).Count();
-            if (checkcasecode > 0)
+            
+           var casecount =_context.tblCases.Select(x=>x.CaseNo).ToList();//2
+            
+            if (casecount.Count > 0)
             {
-                int casen = int.Parse(caseno);
+                var casecode = casecount[casecount.Count - 1];
+                int casen = int.Parse(casecode);
                 casen = casen + 1;
-                string cn = "00" + casen.ToString();
+                string cn = casen.ToString();
                 ViewData["caseno"] = cn;
 
             }
             else
             {
-                ViewData["caseno"] = caseno;
+                //nothing
             }
+            ViewData["Dateofinstitution"] = DateTime.Now;
             ViewData["ClientId"] = new SelectList(_context.Set<tblClients>(), "id", "Name");
             ViewData["CaseCatgoryid"] = new SelectList(_context.tblcaseCategory, "id", "Categoryname");
             ViewData["courtid"] = new SelectList(_context.Set<tblcourt>(), "id", "Courtname");
@@ -85,15 +85,19 @@ namespace CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var checkcaseNo = _context.tblCases.Where(x => x.CaseNo == tblCases.CaseNo).Count();
-                if (checkcaseNo>0)
-                  {
-                    return NotFound();
-                  }
-                _context.Add(tblCases);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+                tblCases.dateInstitution = DateTime.Now;
+                var filenm = _context.tblCases.Where(x => x.File == tblCases.File).Count();
+                if (filenm > 0)
+                {
+                    ModelState.AddModelError("FileNo", "File No Already Exist!");
+                }
+                
+                    
+                }
+            _context.Add(tblCases);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
             ViewData["ClientId"] = new SelectList(_context.Set<tblClients>(), "id", "Name", tblCases.ClientId);
             ViewData["CaseCatgoryid"] = new SelectList(_context.tblcaseCategory, "id", "Categoryname", tblCases.CaseCatgoryid);
             ViewData["courtid"] = new SelectList(_context.Set<tblcourt>(), "id", "Courtname", tblCases.courtid);

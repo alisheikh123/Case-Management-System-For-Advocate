@@ -2,3 +2,12 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$(document).ready(function () {
+    $('input').blur(function () {
+        if ($(this).val() == 0)
+        {
+            $('#Alert').show();
+        }
+    });
+
+});
