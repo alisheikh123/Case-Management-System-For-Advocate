@@ -4,91 +4,91 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
 
-<div class="container-fluid">
+<div class="container">
     <section class="content">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
+            
+            <div class="col-12">
 
 
                 <!-- /.card -->
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with default features</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Case No</th>
-                                    <th>Case Nature</th>
-                                    <th>Case Title</th>
-                                    <th>Opposite Name</th>
-                                    <th>Date of Institution</th>
-                                    <th>File No</th>
-                                    <th>Case Category</th>
-                                    <th>court Name</th>
-                                    <th>Client Name</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
+                        <div class="row">
+                            <div class="col-12" style="text-align:center"><h3 class="card-title">All Cases Detail</h3></div>
 
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
+                        </div>
+                        <div class="col-6" style="margin-left:10px;">
+                     <span><i class="fa fa-plus-circle"></i></span>       <a asp-action="Create" class="btn btn-primary">Add New Case</a>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.CaseNo)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Type)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Title)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.oppositeName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.dateInstitution)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.File)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TblcaseCategory.Categoryname)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Tblcourt.Courtname)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TblClients.Name)
-                                        </td>
-                                        <td>
-                                            <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                                            <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                                            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-                                        </td>
+                                        <th>Case No</th>
+                                        <th>Case Nature</th>
+                                        <th>Case Title</th>
+                                        <th>Opposite Name</th>
+                                        <th>Date of Institution</th>
+                                        <th>File No</th>
+                                        <th>Case Category</th>
+                                        <th>court Name</th>
+                                        <th>Client Name</th>
+                                        <th>Action</th>
                                     </tr>
-                                }
-                            </tbody>
+                                </thead>
 
-                        </table>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CaseNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Type)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.oppositeName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.dateInstitution)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.File)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TblcaseCategory.Categoryname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Tblcourt.Courtname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TblClients.Name)
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                                                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-body -->
-                </div>
                 <!-- /.card -->
             </div>
-            <div class="col-1"></div>        
+                   
     <!-- /.col -->
         </div>
         <!-- /.row -->
