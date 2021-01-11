@@ -86,11 +86,7 @@ namespace CMS.Controllers
             if (ModelState.IsValid)
             {
                 tblCases.dateInstitution = DateTime.Now;
-                var filenm = _context.tblCases.Where(x => x.File == tblCases.File).Count();
-                if (filenm > 0)
-                {
-                    ModelState.AddModelError("FileNo", "File No Already Exist!");
-                }
+             
                 
                     
                 }
@@ -196,6 +192,18 @@ namespace CMS.Controllers
         private bool tblCasesExists(int id)
         {
             return _context.tblCases.Any(e => e.id == id);
+        }
+
+        [HttpPost]
+        public bool fileexist(string fileno) 
+        {
+            var filenm = _context.tblCases.Where(x => x.File == fileno).Count();
+            if (filenm > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -4,9 +4,53 @@
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <style>
+       
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-<div class="container">
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<div class="container-fluid">
     <section class="content">
         <div class="row">
             
@@ -26,18 +70,20 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped table-responsive">
                                 <thead>
                                     <tr>
                                         <th>Case No</th>
-                                        <th>Case Nature</th>
-                                        <th>Case Title</th>
-                                        <th>Opposite Name</th>
-                                        <th>Date of Institution</th>
-                                        <th>File No</th>
                                         <th>Case Category</th>
                                         <th>court Name</th>
                                         <th>Client Name</th>
+                                        <th>Case Title</th>
+
+                                        <th>Opposite Name</th>
+                                        <th>Date of Institution</th>
+                                        <th>File No</th>
+                                        <th>Case Nature</th>
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -45,40 +91,68 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.CaseNo)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Type)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Title)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.oppositeName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.dateInstitution)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.File)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TblcaseCategory.Categoryname)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Tblcourt.Courtname)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TblClients.Name)
-                                            </td>
-                                            <td>
-                                                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                                                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                                                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CaseNo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TblcaseCategory.Categoryname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Tblcourt.Courtname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TblClients.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.oppositeName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dateInstitution)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.File)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Type)
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-danger">Action<span class="fa fa-caret-down" ></span></button>
+                                                @*<button type="button" class="btn btn-danger dropdown-toggle dropbtn" data-toggle="dropdown">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>*@
+                                            <div class="dropdown-content">
+                                                <a asp-action="Edit" asp-route-id="@item.id"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit</a>
+                                                <div class="fc-divider"></div>
+                                                <a asp-action="Details" asp-route-id="@item.id"><i class="fa fa-info-circle "></i>&nbsp;Details</a>
+                                                <a asp-action="Delete" asp-route-id="@item.id"><i class="fa fa-trash-o "></i>&nbsp;Delete</a>
+                                            </div>
+                                            </div>
+                                            @*<div class="btn-group">
+            <button type="button" class="btn btn-danger">Action</button>
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-content" role="menu">
+                <a class="nav-link" asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                <li class="divider"></li>
+                <a class="nav-link" asp-action="Details" asp-route-id="@item.id">Details</a>
+                <li class="divider"></li>
+                <a class="nav-link"  asp-action="Delete" asp-route-id="@item.id">Delete</a>
+
+
+            </ul>
+        </div>*@
+                                        </td>
+                                    
+                                      
+                                    </tr>
                                     }
                                 </tbody>
 
@@ -92,5 +166,9 @@
     <!-- /.col -->
         </div>
         <!-- /.row -->
-    </section>
+         </div>
+            </section>
 </div>
+<script>
+  
+</script>
